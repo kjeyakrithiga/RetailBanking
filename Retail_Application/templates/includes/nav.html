@@ -1,0 +1,77 @@
+
+{% if login %}
+<body>
+    <nav>
+        <ul >
+            <li><a href="{{ url_for('index',login=True) }}" ><i class="fa fa-home" ></i>Home</a></li>
+            <li ><a href="{{ url_for('login',login=True) }}" >Customer Management<i class="fa fa-sort-desc" ></i></a>
+                <ul>
+                    <li><a href="{{ url_for('createCustomer',login=True)}}">Create Customer</a></li>
+                    <li><a href="{{ url_for('customersearch',d=0,login=True)}}">Update Customer</a></li>
+                    <li><a href="{{ url_for('customersearch',d=1,login=True)}}">Delete Customer</a></li>
+                    <li><a href="{{ url_for('customersearch2',login=True)}}">Customer Search</a></li>
+                </ul>
+            </li>
+            <li ><a >Account Management<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                <ul>
+                    <li><a href="{{ url_for('createAccount',login=True)}}">Create Account</a></li>
+                    <li><a href="{{ url_for('acc_delete',login=True)}}">Delete Account</a></li>
+                </ul>
+            </li>
+            <li><a  >Status Details<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                <ul>
+                    <li><a href="{{ url_for('view_account_status',login=True)}}">Customer Account Details</a></li>
+                    <li><a href="{{ url_for('view_customer_status',login=True)}}">Customer Details</a></li>
+                </ul>
+            </li>
+            <li><a >Account Operations<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                <ul>
+                    <li><a href="{{ url_for('acc_withdraw',login=True)}}">Withdrawal</a></li>
+                    <li><a href="{{ url_for('transferamount',login=True)}}">Transfer</a></li>
+                    <li><a href="{{ url_for('acc_dep',login=True)}}">Deposit</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('logout') }}" ><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>            
+        </ul>
+    </nav>
+                
+                {% else %}
+
+                    <nav>
+                               <ul >
+                                   <li><a href="{{ url_for('index',login=False) }}" ><i class="fa fa-home" ></i>Home</a></li>
+                   
+                                   <li ><a >Customer Management<i class="fa fa-sort-desc" ></i></a>
+                                       <ul>
+                                           <li><a href="{{ url_for('login',login=False) }}">Create Customer</a></li>
+                                           <li><a href="{{ url_for('login',login=False) }}">Update Customer</a></li>
+                                           <li><a href="{{ url_for('login',login=False) }}">Delete Customer</a></li>
+                                           <li><a href="#">Customer Details</a></li>
+                                       </ul>
+                                   </li>
+                                   <li ><a >Account Management<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                       <ul>
+                                           <li><a href="{{ url_for('login',login=False) }}">Create Account</a></li>
+                                           <li><a>Delete Account</a></li>
+                                       </ul>
+                                   </li>
+                                   <li><a>Status Details<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                       <ul>
+                                           <li><a href="{{ url_for('login',login=False) }}">Customer Account Details</a></li>
+                                           <li><a href="{{ url_for('login',login=False) }}">Customer Details</a></li>
+                                       </ul>
+                                   </li>
+                                   <li><a >Account Operations<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                       <ul>
+                                           <li><a href="{{ url_for('login',login=False) }}">Withdrawl</a></li>
+                                           <li><a href="{{ url_for('login',login=False) }}">Transfer</a></li>
+                                           <li><a href="{{ url_for('login',login=False) }}">Deposit</a></li>
+                                       </ul>
+                                   </li>
+                                   <li><a href="{{ url_for('login') }}" ><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                                  
+                               </ul>
+                   </nav>
+                </body>                          
+                {% endif %}
+

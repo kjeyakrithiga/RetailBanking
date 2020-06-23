@@ -1,0 +1,42 @@
+
+{% block content %}
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/1.css') }}" >
+    <div class="image-login">
+      <img src="{{ url_for('static', filename='static/11.css') }}">
+    </div>
+  </head>
+  
+  
+<body>
+    
+    
+
+
+
+
+
+        <form name="login" action="login" method="post" novalidate>
+    
+            {{ form.hidden_tag() }}
+            <div class="login-box">
+            <h1 align="center">Login</h1>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                    {{ form.username(placeholder="Username") }}
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+
+                    {{ form.password(placeholder="Password") }}
+            </div>
+
+            {{form.submit(class_="btn")}}
+        </form>
+
+
+            
+{% endblock %}

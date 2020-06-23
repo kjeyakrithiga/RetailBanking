@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <style>
+                *{
+                    margin: 0;
+                    padding: 0;
+                }
+                .f1{
+                    float: left;
+                }
+                .wrapper{
+                    width: 100%;
+                    height:100vh;
+                }
+                .main{
+                    width: 30%;
+                    height: 400px;
+                    background-color: rgba(7,47,79, 0.63);
+                    margin: 50px 35%;
+                    border-radius: 20px 20px 30px 30px;
+    
+                }
+                .head{
+                    width:100%;
+                    background-color: #f8B800;
+                    height: 40px;
+                    border-radius: 20px 20px 0 0;
+                }
+                .head p{
+                    line-height: 40px;
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: bold;
+                    color: #fff;
+                }
+                .form{
+                    width:100%;
+                    height: 500px;
+                }
+                .container{
+                    font-size: 16px;
+                    color: #fff;
+                    margin: 15px 0 0 5%
+                }
+                .name-inp{
+                    width:90%;
+                    height: 30px;
+                    margin:5px 0 0 5%;
+                    font-size: 16px;
+                    padding: 2px;
+                    color:rgb(114, 111,111);
+                    border: 1px solid rgb(17,67,107);
+                    background-color: rgb(231,232,250);
+                }
+                .name-inp:hover{
+                    background-color: rgb(0,23,41);
+                    color: rgb(173,167,167);
+                    border: 1px solid rgb(139,139,139);
+                }
+                input[type=text]{
+                    width:90%;
+                    height: 30px;
+                    margin:5px 0 0 5%;
+                    margin-left: 5px;
+                    font-size: 16px;
+                    padding: 2px;
+                    color:rgb(114, 111,111);
+                    border: 1px solid rgb(17,67,107);
+                    background-color: rgb(231,232,250);
+
+                }
+                input[type=submit]
+            {
+                width: 45%;
+                margin-left: 105px;
+                font-size: 16px;
+                height: 40px;
+                background-color:#f8B800;
+                border: 1px solid rgb(17,67,107);
+                color: #fff;
+                border-radius: 12px;
+                
+            }
+            input[type=submit]:hover{
+                background-color:green;
+                color: #fff;
+            }
+                .dep{
+                    text-align: center;
+
+                }
+            </style>
+        </head>
+        <body>
+            <div class="wrapper f1">
+                <div class="main">
+                    <div class="head"><p>Deposit</p></div>
+                    <div class="form f1">
+        <form name="deposit" action="" method="post" novalidate>
+
+            {% for acc in accounts %}
+            <dl>
+                {% if acc.customer_id==customer_id or acc.account_id==account_id %}
+                {{ form.hidden_tag() }}
+                
+            <p class="container">Customer ID: {{acc.customer_id}}</p>
+                
+
+            <p class="container"> Account ID: {{acc.account_id}}</p>
+            
+
+            <p class="container"> Account Type: {{acc.account_type}}</p>
+            
+
+            <p class="container">Deposit Amount: {{acc.deposit_amount}}</p>
+
+            <p class="dep">
+                {{ form.deposit.label }}<br>
+                {{ form.deposit(size=35) }}
+                {% for error in form.deposit.errors %}
+                    <span class="error-message">{{error}}</span>
+                {% endfor %}
+            </p>
+
+            <p class="container">
+                {{ form.submit(class_="name-inp")}}
+            </p>
+            
+
+            {% endif %}
+        
+        </dl>
+        {% else %}
+            <h3>NO users yet!!</h3>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/3.css') }}">
+    <div class="wrapper-title">
+        <div class="title-box">
+            <img src="{{ url_for('static',filename='images/11.png') }}">
+            <p>Maariamman Indian Bank</p>
+        </div>
+    </div>
+</head>
+{% include "includes/nav.html" %}
+<body>
+    <div class="wrapper-body">
+        <img src="{{ url_for('static',filename='images/7.png') }}">
+    </div>
+<div style="color:purple;text-align: center;font-size: large;font-weight: bold;">
+    {% with messages=get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+        {% for category,message in messages %}
+            <div>
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+</div>
+<div class="contentblock">
+{% block content %}
+
+{% endblock %}
+</div>
+
+<div class="container-footer">
+    <footer style="padding-top: 10px;">
+        <p>Copyright &copy;2020-2021. Maariamman Indian Bank. All rights reserved.</p>
+    </footer>
+</div>
+</body>
+
+    
+</html>    

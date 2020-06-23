@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+    
+{% block content %}
+
+
+<style>
+.bt{
+border-radius: 12px;
+border:2px solid #4CAF50;
+padding: 8px 20px;
+background-color: #4CAF50;
+cursor:pointer;
+text-align: center;
+color: aliceblue;
+}
+h1{
+text-align: center;
+color: rgb(6, 7, 7);
+}
+.table{
+
+    width:100vw;
+}
+.table td,th{
+    color: rgb(6, 7, 7);
+}
+</style>
+<h1>{{title}}</h1>
+<br><br>
+
+<div style="width: 100%; height: 500px; overflow: auto; text-align: center;" >
+    <table class="container table table-strip" text-align="center">
+        <tr text-align="center" >
+            <th scope="col" text-align="right">Customer ID</th>
+            <th scope="col">Account ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Message</th>
+            <th scope="col">Refresh</th>
+        </tr> 
+        <tbody>
+
+        {% for acc in account %}
+        <tr>
+            
+            <td scope='row'> {{acc.customer_id}}</td>
+            <td> {{acc.account_id}}</td>
+            <td> {{acc.account_status}}</td>
+            <td> {{acc.message}}</td>
+            <td>
+            <form action="{{url_for('view_account_status')}}" method="POST" novalidate>
+                <button class="bt">Refresh</button>
+              </form>
+
+             </td>
+        
+        </tr>
+            {% else %}
+            <h3>NO users yet!!</h3>
+             {% endfor %}
+        </tbody> 
+    </table>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

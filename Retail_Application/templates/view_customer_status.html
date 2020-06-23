@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+    
+{% block content %}
+<head>
+
+</head>
+<style>
+ .bt{
+border-radius: 12px;
+border:2px solid #4CAF50;
+padding: 10px 20px;
+background-color: #4CAF50;
+cursor:pointer;
+text-align: center;
+color: aliceblue;
+}
+h1{
+color: rgb(6, 7, 7);
+text-align: center;
+}
+.table{
+
+width:100vw;
+}
+.table td,th{
+color: rgb(6, 7, 7);
+}
+
+</style>
+<h1>{{title}}</h1>
+<br><br>
+<!--  Display the Term and Year here --->
+<h3></h3>
+
+<div style="width: 100%; height: 500px; overflow: auto; text-align: center;" >
+    <table class="table table-hover" text-align="center">
+        <tr text-align="center" >
+            <th scope="col" text-align="right">Customer SSN ID</th>
+            <th scope="col">Customer ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Message</th>
+            <th scope="col">Refresh</th>
+        </tr> 
+        <tbody>
+
+        {% for cus in customers %}
+        <tr>
+            
+            <td scope='row'> {{cus.customer_ssn_id}}</td>
+            <td> {{cus.customer_id}}</td>
+            <td> {{cus.status}}</td>
+            <td> {{cus.message}}</td>
+            <td>
+            <form name="viewcustomerstatus" action="{{url_for('view_customer_status')}}" method="post">
+                <button class="bt">Refresh</button>
+              
+             </td>
+            </form>
+        
+        </tr>
+            {% else %}
+            <h3>NO users yet!!</h3>
+            {% endfor %}
+        </tbody> 
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+
+<head>
+    
+
+</head>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3></h3>
+
+            {% for acc in accounts %}
+            <dl>
+                {% if acc.account_id==sender_account_id %}
+
+                <h1>Sender Account after transfer</h1>
+
+                
+            <dt>Customer ID: {{acc.customer_id}}</dt>
+                
+
+            <dt> Account ID: {{acc.account_id}}</dt>
+            
+
+            <dd> Account Type: {{acc.account_type}}</dd>
+            
+
+            <dd>Deposit Amount: {{acc.deposit_amount}}</dd>
+
+            
+
+            {% endif %}
+        
+        </dl>
+            {% endfor %}
+
+            {% for acc in accounts %}
+            <dl>
+                {% if acc.account_id==receiver_account_id %}
+
+                <h1>Receiver account after transfer</h1>
+
+                
+            <dt>Customer ID: {{acc.customer_id}}</dt>
+                
+
+            <dt> Account ID: {{acc.account_id}}</dt>
+            
+
+            <dd> Account Type: {{acc.account_type}}</dd>
+            
+
+            <dd>Deposit Amount: {{acc.deposit_amount}}</dd>
+
+            
+
+            {% endif %}
+        
+        </dl>
+            {% endfor %}
+            
+        
+    </div>
+</div>
+{% endblock %}
